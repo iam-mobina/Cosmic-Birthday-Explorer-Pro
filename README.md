@@ -1,27 +1,163 @@
-Cosmic Birthday Explorer Pro
-Video Demo: https://youtu.be/NuBD9HAs4Cw?is=wKTPRlZNEQVmNST2
-Motivation
-I am a physics student with a strong interest in astronomy and cosmology, so I wanted my final project to reflect both my passion for space and the programming skills I developed throughout this course. I chose to build an accessible, visually engaging application rather than a purely technical tool — because I believe making science approachable and enjoyable is just as valuable as making it complex. This project was my first step toward combining programming with my field of study, and it gave me a solid foundation to build more specialized scientific tools in the future.
-Description
-Cosmic Birthday Explorer Pro is a Python application that allows users to explore NASA's Astronomy Picture of the Day (APOD) archive in an interactive and informative way. The project combines NASA's official APOD API with image processing, file management, and a terminal-based user interface to create an enjoyable experience for users interested in astronomy and space exploration.
-The original idea behind this project was inspired by the common concept of finding a NASA image related to a person's birthday. However, instead of simply displaying the APOD for a fixed year, the application searches backwards from the current year and automatically finds the most recent Astronomy Picture of the Day that matches the user's birthday. This makes the program significantly more useful because users always receive the newest available APOD published on the same month and day.
-Although APOD is an official NASA service, its archive is not limited to images from the Hubble or James Webb Space Telescopes. The collection includes photographs from a wide range of sources — ground-based observatories, amateur astronomers, various NASA missions, and other space agencies — all carefully selected and published by professional astronomers. The application does its best to detect the source of each image based on the title and description provided by NASA.
-The program provides an interactive menu with multiple features.
-The first option allows the user to enter only their birth month and birth day. The application then searches NASA's archive beginning with the current year and continues backwards until a matching APOD is found.
-The second option allows users to search for any specific date within the APOD archive by entering a complete date in ISO format (YYYY-MM-DD).
-The third option generates a completely random APOD from NASA's archive. A random date between June 16, 1995 (the first APOD ever published) and today is generated automatically.
-The fourth option displays the user's search history. Every successful search is stored inside a local JSON file so previous discoveries can easily be reviewed.
-The fifth option clears the search history.
-The final option exits the program.
-One design decision I made was limiting the history file to the most recent twenty searches. Without this limitation the history file could grow indefinitely. Keeping only the latest entries makes the program easier to maintain while still preserving useful information.
-The application automatically detects whether the APOD is an image or another media type such as a video. When an image is available, the program offers the user the option to download it. If the user chooses to download the image, the highest available quality (HD image whenever available) is saved inside an images folder.
-After downloading an image, the application analyzes it using the Pillow library and displays several useful properties including filename, absolute save location, image resolution, color mode, file format, file size, and aspect ratio. The user may also choose to open the downloaded image immediately using the operating system's default image viewer.
-Another feature of the application is the automatic generation of a detailed report. Every successful search creates a text report inside the reports directory.
-The report includes the APOD title, publication date, media type, detected object category, detected telescope or source, NASA URL, a short explanation, and the complete official NASA explanation.
-The program also analyzes the APOD title and description to classify astronomical objects. It can recognize galaxies, nebulae, planets, moons, stars, and general deep-space objects. In addition, it attempts to detect well-known observatories such as the James Webb Space Telescope, the Hubble Space Telescope, the Spitzer Space Telescope, the Chandra X-ray Observatory, and even images captured from the International Space Station.
-To make the output more informative, I implemented a Quick Facts section. Depending on the detected object or telescope, the application displays additional information such as launch year, mirror size, mission purpose, orbit, approximate astronomical distances, and other educational facts. Although these facts are stored locally rather than retrieved from another API, they significantly improve the overall user experience.
-The terminal interface was designed using the Rich library. Instead of plain text output, Rich provides colorful panels, professional tables, and a much cleaner presentation. This makes the application easier to use and gives it the appearance of a polished command-line program.
-The project is organized into several logical components. The main program resides in project.py, while test_project.py contains automated unit tests for the most important helper functions. The requirements.txt file lists all external Python libraries required to run the application. Downloaded images are stored in the images directory, generated reports are stored in the reports directory, and user history is saved in history.json.
-While developing the project I considered implementing automatic translation of NASA's explanations into Persian. However, this feature depended on external translation services that were not consistently available. I ultimately decided to remove this dependency in order to improve reliability and ensure that the application remains fully functional without relying on third-party translation APIs.
-The project uses several external Python libraries. The requests library communicates with NASA's REST API, Pillow analyzes downloaded image files, Rich provides the terminal interface, and pytest is used to test the project's helper functions.
-Overall, this project demonstrates many topics covered throughout CS50P, including functions, loops, conditionals, exception handling, dictionaries, JSON, file I/O, HTTP requests, external APIs, image processing, modular program design, and automated testing. It also reflects my personal interest in astronomy while creating a practical and enjoyable application that explores NASA's incredible Astronomy Picture of the Day archive.
+# 🌌 Cosmic Birthday Explorer Pro
+
+Explore **NASA's Astronomy Picture of the Day (APOD)** through an interactive Python application that combines astronomy, image processing, and scientific programming.
+
+This project was developed as the final project for **Harvard's CS50P (Introduction to Programming with Python)** and reflects my interest in combining **physics, cosmology, and software development**.
+
+---
+
+## ✨ Features
+
+- 🎂 Explore the latest APOD for your birthday
+- 📅 Search any date in NASA's APOD archive
+- 🎲 Generate a random Astronomy Picture of the Day
+- 🖼 Download HD images (when available)
+- 📊 Display image properties (resolution, size, format, aspect ratio)
+- 📝 Automatically generate detailed text reports
+- 📚 Save and manage search history
+- 🔭 Detect astronomical objects automatically
+- 🚀 Recognize famous observatories and telescopes
+  - James Webb Space Telescope
+  - Hubble Space Telescope
+  - Spitzer Space Telescope
+  - Chandra X-ray Observatory
+  - International Space Station
+- 💡 Display educational Quick Facts
+- 🎨 Beautiful terminal interface powered by Rich
+- ✅ Unit tests using pytest
+
+---
+
+## 🛠 Technologies Used
+
+- Python
+- Requests
+- Pillow
+- Rich
+- Pytest
+- JSON
+- REST APIs
+- NASA APOD API
+
+---
+
+## 📂 Project Structure
+
+```
+Cosmic-Birthday-Explorer-Pro/
+│
+├── project.py
+├── test_project.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/iam-mobina/Cosmic-Birthday-Explorer-Pro.git
+```
+
+Move into the project directory
+
+```bash
+cd Cosmic-Birthday-Explorer-Pro
+```
+
+Install the required packages
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+python project.py
+```
+
+---
+
+## 🧪 Running Tests
+
+```bash
+pytest test_project.py
+```
+
+---
+
+## 🎥 Video Demonstration
+
+Watch the complete project demonstration here:
+
+https://youtu.be/TF2Kr4uBGmc
+
+---
+
+## 🌠 Project Motivation
+
+As a Physics student, I wanted to create a project that combines my passion for **astronomy and cosmology** with the programming skills I learned throughout CS50P.
+
+Rather than building a purely technical application, I aimed to develop something educational, interactive, and enjoyable while working with a real scientific API provided by NASA.
+
+This project represents my first step toward scientific software development and computational physics.
+
+---
+
+## 🔮 Future Improvements
+
+- Desktop GUI version
+- AI-powered astronomical object recognition
+- Additional NASA APIs
+- PDF report export
+- Advanced search filters
+- More astronomical databases
+- Multi-language support
+
+---
+
+## 👩‍💻 About the Author
+
+**Mobina Ghasemi**
+
+Physics Student at the University of Guilan
+
+Interested in:
+
+- Cosmology
+- Scientific Computing
+- Data Analysis
+- Python Development
+- Astronomy
+
+### Connect with me
+
+**GitHub**
+https://github.com/iam-mobina
+
+**LinkedIn**
+https://www.linkedin.com/in/mobina-ghasemi04
+
+**E-mail**
+Mobinaghasemi7@gmail.com 
+
+---
+
+## 🙏 Acknowledgements
+
+- Harvard CS50P
+- NASA Open APIs
+- Python Community
+- Rich
+- Pillow
+- Requests
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
