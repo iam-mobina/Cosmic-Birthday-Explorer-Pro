@@ -140,7 +140,7 @@ Interested in:
 https://github.com/iam-mobina
 
 **LinkedIn**
-https://www.linkedin.com/in/mobina-ghasemi04
+https://www.linkedin.com/in/mobina-gh
 
 **E-mail**
 Mobinaghasemi7@gmail.com 
